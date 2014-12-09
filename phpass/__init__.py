@@ -178,7 +178,7 @@ class PasswordHash:
     
     def check_password(self, pw, stored_hash):
         # This part is different with the original PHP
-        if stored_hash.startswith('$2a$'):
+        if stored_hash.startswith('$2a$') or stored_hash.startswith('$2y$'):
             # bcrypt
             if _bcrypt_hashpw is None:
                 raise NotImplementedError('The bcrypt module is required')
